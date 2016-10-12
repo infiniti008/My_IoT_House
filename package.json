@@ -1,0 +1,25 @@
+{
+  "name": "my_iot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infiniti008/My_IoT_House.git"
+  },
+  "author": "Viachaslau Nikitsionak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/infiniti008/My_IoT_House/issues"
+  },
+  "homepage": "https://github.com/infiniti008/My_IoT_House#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "request": "^2.75.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "my_iot_house",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "TASKER_INTERVAL": 25000
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infiniti008/My_IoT_House.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/infiniti008/My_IoT_House/issues"
+  },
+  "homepage": "https://github.com/infiniti008/My_IoT_House#readme"
+}

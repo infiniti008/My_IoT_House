@@ -1,0 +1,41 @@
+.bg {
+    background-color: black;
+    color: white;
+}
+
+.side-bar-container {
+    position: absolute;
+    height: 100%;
+    width: 33%;
+    padding: 10px;
+}
+
+.main-container {
+    position: absolute;
+    left: 33%;
+    height: 100%;
+    width: 67%;
+    padding: 10px;
+}
+
+.list-actions {
+    width: 80%;
+    position: relative;
+    list-style: none;
+    padding-left: 0;
+}
+
+.list-actions li {
+    padding: 10px 0;
+}
+
+.button-delete-action {
+    color: red;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    border: 2px solid red;
+    border-radius: 5px;
+    padding: 3px;
+    font-weight: 700;
+}

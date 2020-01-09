@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "config": {
-    "TASKER_INTERVAL": 25000
+    "TASKER_INTERVAL_MS": 25000
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -3,7 +3,7 @@ var fs = require("fs");
 class Tasker{
     constructor(config){
         this.actions = require("./actions.js");
-        this.interval = config.TASKER_INTERVAL;
+        this.interval = config.TASKER_INTERVAL_MS;
         this.tasksPath = "./tasks.json";
 
         this.checkTasks();

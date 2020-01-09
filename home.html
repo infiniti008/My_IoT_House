@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actions</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body class="bg">
+
+    <div class="side-bar-container">
+
+
+    </div>
+    <div class="main-container">
+
+        <label>
+            Выберите действие из списка
+            <br>
+        
+            <select name="actions" id="actionsSelect">
+                <option value="LAMP_1_ON">LAMP_1_ON</option>
+                <option value="LAMP_2_ON">LAMP_2_ON</option>
+                <option value="LAMP_3_ON">LAMP_3_ON</option>
+                <option value="LAMP_4_ON">LAMP_4_ON</option>
+            </select>
+        </label>
+    
+        <button onclick="addActionToList()">Добавить действие</button>
+    
+        <br>
+        <label>Выбранные действия:</label>
+        <ul class="list-actions" id="actionsList"></ul>
+    
+        <input type="time" name="actionTime" id="actionTime">
+        
+        <br>
+        <label>
+            ПН
+            <input type="checkbox" name="daysOfWeek" value="1">
+        </label>
+        <br>
+        <label>
+            ВТ
+            <input type="checkbox" name="daysOfWeek" value="2">
+        </label>
+        <br>
+        <label>
+            СР
+            <input type="checkbox" name="daysOfWeek" value="3">
+        </label>
+        <br>
+        <label>
+            ЧТ
+            <input type="checkbox" name="daysOfWeek" value="4">
+        </label>
+        <br>
+        <label>
+            ПТ
+            <input type="checkbox" name="daysOfWeek" value="5">
+        </label>
+        <br>
+        <label>
+            СБ
+            <input type="checkbox" name="daysOfWeek" value="6">
+        </label>
+        <br>
+        <label>
+            ВС
+            <input type="checkbox" name="daysOfWeek" value="7">
+        </label>
+    
+        <br>
+        <label>
+            Разово
+            <input checked type="radio" name="repeate" value="0">
+        </label>
+    
+        <br>
+        <label>
+            Повторять каждую неделю
+            <input type="radio" name="repeate" value="1">
+        </label>
+    
+        <br>
+        <button onclick="saveAction()">Сохранить задачу</button>
+    </div>
+    
+    
+    
+    <script src="home.js"></script>
+</body>
+</html>

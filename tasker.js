@@ -2,12 +2,12 @@ var fs = require("fs");
 
 class Tasker{
     constructor(config){
-        this.actions = require("./actions.js");
         this.interval = config.TASKER_INTERVAL_MS;
-        this.tasksPath = "./tasks.json";
+        this.tasksPath = "tasks.json";
+        this.actionsPath = "./actions.js";
 
         this.checkTasks();
-        this.intervalId = setInterval(this.checkTasks, this.interval);
+        this.intervalId = setInterval(this.checkTasks.bind(this), this.interval);
     };
 
     addZero(number){
@@ -16,37 +16,43 @@ class Tasker{
     }
 
     runAction(action){
-        this.actions[action]();
+        try{
+            var actions = require(this.actionsPath);
+            actions[action]();
+        }
+        catch(e){
+            console.log(e);
+        }
     }
 
     checkTasks(){
-        var tasks = require(this.tasksPath);
+        var tasks = JSON.parse(fs.readFileSync(this.tasksPath).toString());
         var currentDate = new Date();
         var arr = [];
-        arr[0] = currentDate.getFullYear();
-        arr[1] = this.addZero(currentDate.getMonth() + 1);
-        arr[2] = this.addZero(currentDate.getDate());
-        arr[3] = this.addZero(currentDate.getHours());
-        arr[4] = this.addZero(currentDate.getMinutes());
+        arr[0] = this.addZero(currentDate.getHours());
+        arr[1] = this.addZero(currentDate.getMinutes());
 
         var currentTimeStr = arr.join(":");
         var updatedTasks = [];
 
         tasks.forEach(element => {
-            var taskTime = element.split("-")[0];
-            var action = element.split("-")[1];
-            var repeat = element.split("-")[2];
-            if(taskTime === currentTimeStr){
-                if(repeat){
-                    updatedTasks.push(element);
-                    var dayOfWeek = currentDate.getDay();
-                    if( repeat[dayOfWeek - 1] === "1"){
-                        this.runAction(action);
-                    }
+            var taskArr = element.split("|");
+            var actionsArr = taskArr.slice(3);
+            var taskTime = taskArr[0];
+            var daysOfWeek = taskArr[1];
+            var repeat = taskArr[2];
+            var dayOfWeek = currentDate.getDay() - 1; // start from 0
+            
+            if( taskTime === currentTimeStr && daysOfWeek[dayOfWeek] === "1" ){
+
+                actionsArr.forEach(this.runAction.bind(this));
+
+                if( repeat == "0" ){
+                    var t = taskArr[1].split("");
+                    t[dayOfWeek] = 0;
+                    taskArr[1] = t.join("");
                 }
-                else{
-                    this.runAction(action);
-                }
+                setTimeout( this.addTask.bind(this, taskArr.join("|")), 70000 );
             }
             else {
                 updatedTasks.push(element);
@@ -59,7 +65,7 @@ class Tasker{
     }
     
     addTask(task){
-        var tasks = require(this.tasksPath);
+        var tasks = JSON.parse(fs.readFileSync(this.tasksPath).toString());
         var existsTask = tasks.find( element => element === task );
         
         if(!existsTask){
@@ -69,7 +75,7 @@ class Tasker{
     }
     
     updateTask(oldTask, newTask){
-        var tasks = require(this.tasksPath);
+        var tasks = JSON.parse(fs.readFileSync(this.tasksPath).toString());
         tasks.forEach((element, index) => {
             if(element === oldTask){
                 tasks[index] = newTask;
@@ -79,7 +85,7 @@ class Tasker{
     }
     
     removeTask(task){
-        var tasks = require(this.tasksPath);
+        var tasks = JSON.parse(fs.readFileSync(this.tasksPath).toString());
         var updatedTasks = [];
         tasks.forEach((element, index) => {
             if(element !== task){
@@ -90,7 +96,7 @@ class Tasker{
     }
 
     allTasks(){
-        var tasks = require(this.tasksPath);
+        var tasks = JSON.parse(fs.readFileSync(this.tasksPath).toString());
         return tasks;
     }
 }

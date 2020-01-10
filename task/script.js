@@ -19,7 +19,7 @@ function updateSelectedActionsList(){
     actionsList.innerHTML = "";
 
     for (const p in actions) {
-        actionsList.innerHTML += "<li>" + p + "  <span class='button-delete-action' onclick='deleteOptionFromList(\"" + p + "\")'>Удалить</span></li>";
+        actionsList.innerHTML += "<li>" + p + "  <span class='button-delete-action pabs' onclick='deleteOptionFromList(\"" + p + "\")'>Удалить</span></li>";
     }
 }
 
@@ -87,6 +87,7 @@ function formateTaskRecord(time, days, weaklyRepeate, actionsList){
 
 if(existsTask) {
     updateWithExistsTask();
+    highlightToday();
 }
 
 function updateWithExistsTask(){
@@ -115,4 +116,16 @@ function updateWithExistsTask(){
 
     updateSelectedActionsList();
 
+}
+
+function highlightToday(){
+    var daysNodes = document.getElementsByName("daysOfWeek");
+    var day = new Date().getDay();
+    console.log(day);
+    daysNodes.forEach(function(dayNode, index){
+        if( index == day - 1 ){
+            window.t = dayNode
+            dayNode.parentNode.parentNode.classList.add("today");
+        }
+    });
 }

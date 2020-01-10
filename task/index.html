@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Actions</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="bg">
+
+	<div class="side-bar-container">
+
+	</div>
+	
+	<div class="main-container">
+
+		<div class="content-container actions-container">
+			<select class="actions-select btn-color-violet" name="actions" id="actionsSelect">
+				<option value="LIGHT_R1_ON">LIGHT_R1_ON</option>
+				<option value="LIGHT_R2_ON">LIGHT_R2_ON</option>
+				<option value="LIGHT_R3_ON">LIGHT_R3_ON</option>
+				<option value="LIGHT_R4_ON">LIGHT_R4_ON</option>
+			</select>
+			<span class="button-delete-action pabs btn-color-violet mr15" onclick="addActionToList()">Добавить действие</span>
+		</div>
+
+		<br><br>
+
+		<div class="content-container">
+			<ul class="list-actions" id="actionsList"></ul>
+		</div>
+
+		<br><br>
+		<div class="content-container">
+			<input class="time btn-color-violet" type="time" name="actionTime" id="actionTime">
+			<div class="days-container">
+				<div class="day-container">
+					<label>
+						<span>ПН</span>
+						<input type="checkbox" name="daysOfWeek" value="1">
+					</label>
+				</div>
+				<div class="day-container">
+					<label>
+						<span>ВТ</span>
+						<input type="checkbox" name="daysOfWeek" value="2">
+					</label>
+				</div>
+				<div class="day-container">
+					<label>
+						<span>СР</span>
+						<input type="checkbox" name="daysOfWeek" value="3">
+					</label>
+				</div>
+				<div class="day-container">
+					<label>
+						<span>ЧТ</span>
+						<input type="checkbox" name="daysOfWeek" value="4">
+					</label>
+				</div>
+				<div class="day-container">
+					<label>
+						<span>ПТ</span>
+						<input type="checkbox" name="daysOfWeek" value="5">
+					</label>
+				</div>
+				<div class="day-container">
+					<label>
+						<span>СБ</span>
+						<input type="checkbox" name="daysOfWeek" value="6">
+					</label>
+				</div>
+				<div class="day-container">
+					<label>
+						<span>ВС</span>
+						<input type="checkbox" name="daysOfWeek" value="7">
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<br><br>
+		<div class="content-container">
+			<div class="repeat-container">
+				<label>
+					<span>Разово</span>
+					<input checked type="radio" name="repeate" value="0">
+				</label>
+			</div>
+			<div class="repeat-container">
+				<label>
+					<span>Повторять каждую неделю</span>
+					<input type="radio" name="repeate" value="1">
+				</label>
+			</div>
+		</div>
+		
+		<br>
+		<span class="button-delete-action btn-color-violet" onclick="saveAction()">Сохранить задачу</span>
+		<br><br>
+	</div>
+
+
+
+	<script src="script.js"></script>
+</body>
+
+</html>

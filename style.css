@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Micra';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Micra'), local('Micra-Normal'),
+        url(micra.ttf) format('truetype');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Micra;
+}
+
+.btn-color-red {
+    border-color: tomato;
+    color: tomato;
+}
+
+.btn-color-violet {
+    border-color: violet;
+    color: violet;
+}
+
+.mr15 {
+    margin-right: 15px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.pabs {
+    position: absolute;
+}
